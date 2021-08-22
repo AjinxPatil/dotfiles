@@ -1,0 +1,62 @@
+" Defaults
+unlet! skip_defaults_vim
+source $VIMRUNTIME/defaults.vim
+
+" Command autocompletion
+set wildmode=longest:full,full
+
+" Status bar
+set laststatus=2
+
+" Line numbering
+set number
+set relativenumber
+
+" Line indentation
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+
+" Bracket highlighting
+set showmatch
+
+" Search
+set hlsearch
+
+" Mouse support
+set mouse=a
+
+" Clipboard
+set clipboard=unnamed
+
+" Silence
+set belloff=all
+
+" Backup
+set nobackup
+set nowritebackup
+set noswapfile
+
+" Cursorline
+autocmd InsertEnter * set cursorline
+autocmd InsertLeave * set nocursorline
+
+" Window
+set title
+
+" Theme
+" Install NLKNguyen/papercolor-theme and itchyny/lightline.vim
+set background=light
+set noshowmode
+let g:PaperColor_Theme_Options = {
+\  'theme': {
+\    'default.light': {
+\      'transparent_background': 1
+\    }
+\  }
+\}
+let g:lightline = {
+\  'colorscheme': 'PaperColor'
+\}
+colorscheme PaperColor
+

@@ -1,0 +1,24 @@
+[user]
+	# See  ~/.gitconfig
+[merge]
+	tool = diffmerge
+	conflictstyle = diff3
+[core]
+	editor = /usr/bin/vim
+[color]
+	ui = true
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset'
+	lgd = log --oneline --cherry-pick --no-merges --left-only
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[pull]
+	rebase = false
+[pager]
+	branch = false
+[push]
+	default = current
+

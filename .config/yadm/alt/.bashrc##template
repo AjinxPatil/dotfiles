@@ -1,0 +1,76 @@
+# bashrc managed by yadm's bashrc##template
+
+##########
+# Prompt
+##########
+
+# Git prompt, https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
+source ~/.config/git/prompt.sh
+PROMPT_COMMAND=__prompt_command
+# This prompt requires terminal to be xterm-256color and looks better on a whitish background.
+# It uses xterm control sequences, https://www.xfree86.org/current/ctlseqs.html
+__prompt_command() {
+	local last_cmd_exit="$?"
+	local bg='48;5;255'
+	if [[ "$last_cmd_exit" != 0 ]]; then
+		bg='48;5;224'
+	fi
+	local GIT_PS1_SHOWSTASHSTATE=1
+	local git_ps1='$(__git_ps1 "(git: %s) ")'
+	local python_venv_ps1="\[\e[1;38;5;24;${bg}m\](python-venv)"
+	local base_ps1="\[\e[1;38;5;245;${bg}m\]\u@\h \[\e[1;38;5;0;${bg}m\]: \[\e[1;38;5;240;${bg}m\]\w \[\e[1;38;5;203;${bg}m\]$git_ps1\[\e[K\e[m\e[1m\]\n\$ "
+	if [[ -n "$_OLD_VIRTUAL_PS1" ]]; then # variable set by Python venv
+		PS1="$python_venv_ps1 $base_ps1"
+	else
+		PS1="$base_ps1"
+	fi
+	PS0='\[\e[m\]'
+	echo -ne "\e]0;$PWD\a"
+	echo -ne "\n"
+}
+
+###########
+# Aliases
+###########
+
+# GNU utilities
+alias ll='ls -oFAh --color=auto'
+alias lt='ls -ohFAt --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# Python venv, the virtual env dir is globally ignored by git, see ~/.config/git/ignore
+alias pve='python -m venv --prompt python-venv .python-venv && source .python-venv/bin/activate'
+
+{% if yadm.os == "Darwin" %}
+#######################
+# Java version toggle
+#######################
+
+setjava() {
+	if [[ "$#" != 1 ]]; then
+		set -x
+		/usr/libexec/java_home -V
+		set +x
+		echo "JAVA_HOME: $JAVA_HOME"
+		echo "Usage: setjava <version>"
+		echo "Example: setjava 1.8.0_151"
+		return 1
+	fi
+	JAVA_HOME="$(/usr/libexec/java_home -v "$1")"
+	export JAVA_HOME
+	mkdir -p ~/.config
+	touch ~/.config/java_home
+	echo "$JAVA_HOME" > ~/.config/java_home
+}
+
+################
+# Extra config
+################
+
+if [[ -f ~/.config/adobe/bashrc ]]; then
+	source ~/.config/adobe/bashrc
+fi
+
+{% endif %}

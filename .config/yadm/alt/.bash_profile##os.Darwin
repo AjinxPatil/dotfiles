@@ -1,0 +1,41 @@
+# bash_profile managed by yadm's bash_profile##os.Darwin
+
+# Prefer GNU utilities over macOS
+gnuutils=(coreutils findutils gnu-sed gnu-tar gnu-which gawk grep make)
+for gnuutil in "${gnuutils[@]}"; do
+	gnuutil_path="/usr/local/opt/$gnuutil/libexec/gnubin"
+	if [[ -e "$gnuutil_path" ]]; then
+		export PATH="$gnuutil_path:$PATH"
+	fi
+	gnuutil_manpath="/usr/local/opt/$gnuutil/libexec/gnuman"
+	if [[ -e "$gnuutil_manpath" ]]; then
+		export MANPATH="$gnuutil_manpath:$MANPATH"
+	fi
+done
+export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
+
+# Python
+export PATH="/usr/local/opt/python@3.12/libexec/bin:$PATH"
+
+# Groovy
+export GROOVY_HOME=/usr/local/opt/groovy/libexec
+
+# fzf
+eval "$(fzf --bash)"
+
+# Java
+if [[ -f ~/.bashrc && -f ~/.config/java_home ]]; then
+	JAVA_HOME="$(cat ~/.config/java_home)"
+	export JAVA_HOME
+fi
+
+# Extend profile
+if [[ -f ~/.config/adobe/bash_profile ]]; then
+	source ~/.config/adobe/bash_profile
+fi
+
+# Last, bashrc
+if [[ -f ~/.bashrc ]]; then
+	source ~/.bashrc
+fi
+
