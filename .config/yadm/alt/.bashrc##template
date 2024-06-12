@@ -44,27 +44,6 @@ alias egrep='egrep --color=auto'
 alias pve='python -m venv --prompt python-venv .python-venv && source .python-venv/bin/activate'
 
 {% if yadm.os == "Darwin" %}
-#######################
-# Java version toggle
-#######################
-
-setjava() {
-	if [[ "$#" != 1 ]]; then
-		set -x
-		/usr/libexec/java_home -V
-		set +x
-		echo "JAVA_HOME: $JAVA_HOME"
-		echo "Usage: setjava <version>"
-		echo "Example: setjava 1.8.0_151"
-		return 1
-	fi
-	JAVA_HOME="$(/usr/libexec/java_home -v "$1")"
-	export JAVA_HOME
-	mkdir -p ~/.config
-	touch ~/.config/java_home
-	echo "$JAVA_HOME" > ~/.config/java_home
-}
-
 ################
 # Extra config
 ################

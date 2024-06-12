@@ -23,12 +23,6 @@ export GROOVY_HOME=/usr/local/opt/groovy/libexec
 # fzf
 eval "$(fzf --bash)"
 
-# Java
-if [[ -f ~/.bashrc && -f ~/.config/java_home ]]; then
-	JAVA_HOME="$(cat ~/.config/java_home)"
-	export JAVA_HOME
-fi
-
 # Extend profile
 if [[ -f ~/.config/adobe/bash_profile ]]; then
 	source ~/.config/adobe/bash_profile
