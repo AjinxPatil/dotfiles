@@ -15,7 +15,7 @@ __prompt_command() {
 	if [[ "$last_cmd_exit" != 0 ]]; then
 		bg='48;5;224'
 	fi
-	local GIT_PS1_SHOWSTASHSTATE=1
+	GIT_PS1_SHOWSTASHSTATE=1
 	local git_ps1='$(__git_ps1 "(git: %s) ")'
 	local python_venv_ps1="\[\e[1;38;5;24;${bg}m\](python-venv)"
 	local base_ps1="\[\e[1;38;5;245;${bg}m\]\u@\h \[\e[1;38;5;0;${bg}m\]: \[\e[1;38;5;240;${bg}m\]\w \[\e[1;38;5;203;${bg}m\]$git_ps1\[\e[K\e[m\e[1m\]\n\$ "
