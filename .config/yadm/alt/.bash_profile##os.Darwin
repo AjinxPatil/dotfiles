@@ -1,5 +1,8 @@
 # bash_profile managed by yadm's bash_profile##os.Darwin
 
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Prefer GNU utilities over macOS
 gnuutils=(coreutils findutils gnu-sed gnu-tar gnu-which gawk grep make)
 for gnuutil in "${gnuutils[@]}"; do
