@@ -6,16 +6,16 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # Prefer GNU utilities over macOS
 gnuutils=(coreutils findutils gnu-sed gnu-tar gnu-which gawk grep make)
 for gnuutil in "${gnuutils[@]}"; do
-	gnuutil_path="/usr/local/opt/$gnuutil/libexec/gnubin"
+	gnuutil_path="/opt/homebrew/opt/$gnuutil/libexec/gnubin"
 	if [[ -e "$gnuutil_path" ]]; then
 		export PATH="$gnuutil_path:$PATH"
 	fi
-	gnuutil_manpath="/usr/local/opt/$gnuutil/libexec/gnuman"
+	gnuutil_manpath="/opt/homebrew/opt/$gnuutil/libexec/gnuman"
 	if [[ -e "$gnuutil_manpath" ]]; then
 		export MANPATH="$gnuutil_manpath:$MANPATH"
 	fi
 done
-export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-getopt/bin:$PATH"
 
 # Python
 export PATH="/usr/local/opt/python@3.12/libexec/bin:$PATH"
