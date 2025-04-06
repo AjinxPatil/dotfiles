@@ -18,7 +18,7 @@ done
 export PATH="/opt/homebrew/opt/gnu-getopt/bin:$PATH"
 
 # Python
-export PATH="/usr/local/opt/python@3.12/libexec/bin:$PATH"
+export PATH="/opt/homebrew/opt/python@3.13/libexec/bin:$PATH"
 
 # Groovy
 export GROOVY_HOME=/usr/local/opt/groovy/libexec

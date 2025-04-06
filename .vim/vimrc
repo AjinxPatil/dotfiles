@@ -37,7 +37,7 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" Cursorline
+" Cursor
 autocmd InsertEnter * set cursorline
 autocmd InsertLeave * set nocursorline
 
@@ -45,18 +45,11 @@ autocmd InsertLeave * set nocursorline
 set title
 
 " Theme
-" Install NLKNguyen/papercolor-theme and itchyny/lightline.vim
-set background=light
+" Install 
+" - NLKNguyen/papercolor-theme
+" - itchyny/lightline.vim
+" - vimpostor/vim-lumen  
 set noshowmode
-let g:PaperColor_Theme_Options = {
-\  'theme': {
-\    'default.light': {
-\      'transparent_background': 1
-\    }
-\  }
-\}
-let g:lightline = {
-\  'colorscheme': 'PaperColor'
-\}
-colorscheme PaperColor
+colorscheme papercolor
+let g:lightline = { 'colorscheme': 'PaperColor' }
 
