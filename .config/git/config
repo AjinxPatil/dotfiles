@@ -8,7 +8,7 @@
 [color]
 	ui = true
 [alias]
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset'
+	lg = log --graph --pretty=format:'%Cred%h%C(yellow)%d %C(default)%s %Cblue-- %cr by %C(brightblue)%aN'
 	lgd = log --oneline --cherry-pick --no-merges --left-only
 [filter "lfs"]
 	required = true
