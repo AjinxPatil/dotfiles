@@ -31,17 +31,8 @@ precmd() {
     _prompt_initialized=1
 }
 
-# Refresh tmux status bar on directory change
-chpwd() {
-    [[ -n "$TMUX" ]] && tmux refresh-client -S
-}
-
-if [[ -n "$TMUX" ]]; then
-    PROMPT='%B%(?.%F{2}.%F{1})%#%f%b '
-else
-    PROMPT='%B%F{8}%~%f %F{1}$(__git_ps1 " %s")%f
+PROMPT='%B%F{8}%~%f %F{1}$(__git_ps1 " %s")%f
 %(?.%F{2}.%F{1})%#%f%b '
-fi
 
 # ==========================
 # Aliases
@@ -50,6 +41,13 @@ alias ll='ls -oFAh --group-directories-first --color=auto'
 alias lt='ls -ohFAt --color=auto'
 alias grep='grep --color=auto'
 alias pve='python -m venv --prompt python-venv .python-venv && source .python-venv/bin/activate'
+
+# ==========================
+# Options
+# ==========================
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_MINUS
 
 # ==========================
 # Local/Extra Config
